@@ -1,0 +1,8 @@
+Test Prep.iml
+
+# Ignore IntelliJ
+.idea/
+
+# Ignore output
+
+out/
