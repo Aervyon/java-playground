@@ -1,8 +1,11 @@
+import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.regex.*;
+import misc.MiscUtils;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println("- Time: " + MiscUtils.time() );
+
         Scanner scan = new Scanner(System.in);
         String[] answers = {"", "", "", ""};
         String[] missing = {"", "", "", ""};
@@ -26,15 +29,17 @@ public class Main {
                 missing[i+1] = "";
             }
         }
-        String missingO = "--------------\nMissing answers to (invalidated by user):\n" + String.join("\n", missing);
-        if (missing.length == 0) {
+        ArrayList<String> missingList = MiscUtils.arrToListLinked(missing);
+        ArrayList<String> answersList = MiscUtils.arrToListLinked(answers);
+        String missingO = "--------------\nMissing answers (invalidated by user):\n==============\n" + String.join("\n", missingList);
+        if (missingList.size() == 0) {
             missingO = "";
         }
-        String ans = "--------------\nAnswer:\n" + String.join("\n", answers);
-        if (answers.length == 0) {
+        String ans = "--------------\nAnswer:\n==============\n" + String.join("\n", answersList);
+        if (answersList.size() == 0) {
             ans = "";
         }
-        System.out.println(missingO + "\n" + ans);
+        System.out.println(missingO + "\n\n" + ans + "\n\n--------------\n- Time: " + MiscUtils.time() );
     }
 
     public static String question(String query, Scanner scan) {
